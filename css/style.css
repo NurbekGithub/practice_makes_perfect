@@ -1,0 +1,26 @@
+@font-face {
+  font-family: SansationBold;
+  src: url(../assets/fonts/Sansation_Bold.ttf);
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: SansationRegular;
+  src: url(../assets/fonts/Sansation_Regular.ttf);
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: MyriadProLight;
+  src: url(../assets/fonts/8145.otf);
+}
+
+@font-face {
+  font-family: HelveticaBold;
+  src: url(../assets/fonts/HelveticaLTStd-Bold.otf);
+}
+
+@font-face {
+  font-family: HelveticaLight;
+  src: url(../assets/fonts/HelveticaLTStd-LightCond.otf);
+}
