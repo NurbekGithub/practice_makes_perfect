@@ -1,3 +1,5 @@
+/* ===========================FONTS========================= */
+
 @font-face {
   font-family: SansationBold;
   src: url(../assets/fonts/Sansation_Bold.ttf);
@@ -23,4 +25,249 @@
 @font-face {
   font-family: HelveticaLight;
   src: url(../assets/fonts/HelveticaLTStd-LightCond.otf);
+}
+
+/* ===========================GLOBAL======================== */
+:root {
+  --red: #da2346;
+  --cyan: #097e89;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: SansationRegular;  
+}
+
+.red-text {
+  color: var(--red);
+}
+
+/* ===========================HEADER======================== */
+header {
+  height: 55vw;
+  max-height: 650px;
+  background: radial-gradient(#5b4f7c, #40336a);
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  left: -32%;
+  width: 70%;
+  background: radial-gradient(#483679, #2c1f62);
+  height: 100%;
+  z-index: 0;
+  transform: skew(45deg);
+}
+
+
+header nav {
+  display: flex;
+  position: relative;
+  justify-content: space-between;
+  height: 60px;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+  z-index: 1;
+}
+
+.brand-name {
+  flex: 0 0 18%;
+}
+header nav .brand-link {
+  color: #fff;
+  font-size: 24px;
+  margin-left: 34px;
+  text-decoration: none;
+  font-weight: normal;
+}
+
+header nav .navbar {
+  flex: 0 0 64%;
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+header nav .navbar a {
+  color: #fff;
+  text-decoration: none;
+  transition: color .3s;
+}
+
+header nav .navbar a:hover {
+  color: var(--cyan)
+}
+
+header nav .social-links {
+  display: flex;
+  justify-content: center;
+  flex: 0 0 18%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+}
+
+.social-link a{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  width: 30px;
+  height: 30px;
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 50%;
+  margin: 0 3px;
+  transition: .3s;
+}
+
+.social-link a:hover {
+  color: var(--cyan);
+}
+
+#banner {
+  flex: 1;
+}
+
+.banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.banner-caption {
+  box-sizing: border-box;
+  position: relative;
+  text-align: center;
+  max-width: 600px;
+  position: relative;
+  padding: 45px;
+  border: 1px solid rgba(255,255,255,.2);
+  z-index: 2;
+}
+
+.banner-caption h2 {
+  font-family: SansationBold;
+  font-size: 48px;
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.banner-caption p {
+  margin: 26px 0;
+  font-weight: normal;
+  font-size: 12px;
+  color: #fff;
+}
+
+.banner-caption button {
+  position: absolute;
+  bottom: -17.5px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-transform: uppercase;
+  background: transparent;
+  color: #fff;
+  font-family: SansationRegular;
+  font-weight: bold;
+  border: 2px solid #fff;
+  width: 110px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all .3s;
+}
+
+.banner-caption button:hover {
+  background: #fff;
+  color: #000;
+}
+
+.banner h2 {
+  margin: 0;
+}
+
+.banner > button {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 36px;
+  top: 50%;
+  transform: translateY(-50%);
+  overflow: hidden;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.4);
+  z-index: 3;
+}
+
+.banner > button > span {
+  width: 14px;
+  display: inline-block;
+  position: relative;
+  vertical-align: middle;
+  height: 14px;
+  border-left: 1px solid rgba(255,255,255,.5);
+  border-bottom: 1px solid rgba(255,255,255,.5);
+}
+
+.prev {
+  left: 50px;
+  justify-content: flex-end!important;
+}
+
+.prev span {
+  left: 6px;
+  transform: rotateZ(45deg);
+}
+
+.next {
+  right: 50px;
+}
+
+.next span {
+  transform: rotate(-135deg);
+  right: 6px;
+}
+
+.banner-1::before {
+  position: absolute;
+  content: '';
+  background: url('../assets/img/iphone.png') no-repeat;
+  width: 100%;
+  height: 100%;
+  background-size: 78%;
+  top: 0;
+  background-position-y: 10%;
+  background-position-x: 60%;
+}
+
+.banner-1::after {
+  position: absolute;
+  content: '';
+  background: radial-gradient(rgba(0,0,0,.6), rgba(255,255,255,0));
+  opacity: .6;
+  width: 100%;
+  height: 100%;
+  top: 0;
+}
+
+@media (max-width: 795px) {
+  .banner > button {
+    display: none;
+  }
 }
