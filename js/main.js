@@ -42,6 +42,22 @@ function activateScroll() {
   aboutBodyContainer.addEventListener('mouseup', handleMouseUp);
   aboutBodyContainer.addEventListener('mousemove', handleMouseMove);
   aboutBodyContainer.addEventListener('mouseleave', handleMouseLeave);
+};
+
+function activateToggleNav() {
+  const toggleBtn = document.querySelector('.nav-toggle button');
+  const toggledNav = document.querySelector('.nav-toggle ul');
+
+  function toggleNav(e) {
+    if(toggledNav.style.display === 'none') {
+      toggledNav.style.display = 'block';
+    } else {
+      toggledNav.style.display = 'none';
+    }
+  }
+
+  toggleBtn.addEventListener('click', toggleNav);
 }
 
 activateScroll();
+activateToggleNav();
