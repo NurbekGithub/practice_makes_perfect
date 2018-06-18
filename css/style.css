@@ -141,6 +141,7 @@ header nav .social-links {
 
 #banner {
   flex: 1;
+  position: relative;
 }
 
 .banner {
@@ -204,7 +205,7 @@ header nav .social-links {
   margin: 0;
 }
 
-.banner > button {
+#banner > button {
   position: absolute;
   display: flex;
   justify-content: center;
@@ -219,7 +220,7 @@ header nav .social-links {
   z-index: 3;
 }
 
-.banner > button > span {
+#banner > button > span {
   width: 14px;
   display: inline-block;
   position: relative;
@@ -246,6 +247,19 @@ header nav .social-links {
 .next span {
   transform: rotate(-135deg);
   right: 6px;
+}
+
+.banner {
+  animation: slideLeft .3s ease-out;
+}
+
+@keyframes slideLeft {
+  from {
+    margin-left: 100%;
+  }
+  to {
+    margin-left: 0;
+  }
 }
 
 .banner-1::before {
@@ -319,6 +333,14 @@ header nav .social-links {
   background: #eee;
   opacity: 1;
 }
+.nav-toggle .social-links {
+  background: #eee;
+  padding: 10px;
+}
+
+.nav-toggle .social-links a {
+  margin: 0 10px;
+}
 
 @keyframes slideDown {
   from {
@@ -333,7 +355,7 @@ header nav .social-links {
 }
 
 @media (max-width: 795px) {
-  .banner > button {
+  #banner > button {
     display: none;
   }
 

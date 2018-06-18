@@ -56,8 +56,56 @@ function activateToggleNav() {
     }
   }
 
-  toggleBtn.addEventListener('click', toggleNav);
+  //close toggledNav after any click
+  document.addEventListener('click', () => {
+    if(toggledNav.style.display !== 'none') {
+      toggledNav.style.display = 'none';
+    }
+  }, true)
+  toggleBtn.addEventListener('click', toggleNav, false);
+
+
 }
 
+function activateCarousel() {
+  const bannerSection = document.querySelector('#banner');
+  const banners = bannerSection.querySelectorAll('.banner');
+  const prevButton = bannerSection.querySelector('.prev');
+  const nextButton = bannerSection.querySelector('.next');
+  let slideIndex = 0;
+
+  banners.forEach(banner => {
+    banner.style.display = 'none'
+  });
+
+  function showSlide(n) {
+    console.log(n);
+    banners.forEach(banner => {
+      banner.style.display = 'none'
+    });
+
+    if(n >= banners.length) {
+      slideIndex = 0;
+      showSlide(slideIndex);
+      return;
+    } else if (n < 0) {
+      slideIndex = banners.length - 1;
+      showSlide(slideIndex);
+      return;
+    }
+    banners[n].style.display = 'flex';
+  }
+
+  prevButton.addEventListener('click', () => showSlide(--slideIndex), true);
+  nextButton.addEventListener('click', () => showSlide(++slideIndex), true);
+
+  if(bannerSection.dataset.autoslide !== 'false') {
+    const autoSlide = setInterval(() => showSlide(slideIndex++), 5000)
+  }
+
+  showSlide(slideIndex);
+}
+
+activateCarousel();
 activateScroll();
 activateToggleNav();
