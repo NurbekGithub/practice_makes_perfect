@@ -823,6 +823,193 @@ body {
   padding: 45px 0 25px;
 }
 
+/* Callback */
+.callback {
+  background-color: #097e89;
+  display: flex;
+  flex-flow: row wrap;
+  color: #ffffff;
+  align-items: center;
+  padding: 0 50px 0 40px;
+}
+.callback-title {
+  flex-basis: 44%;
+}
+.callback-title h5 {
+  font-size: 38px;
+  margin: 30px 0 35px;
+}
+.callback-title p {
+  margin-bottom: 60px;
+  font-size: 15px;
+  line-height: 1.5;
+}
+.callback-form {
+  flex-basis: 56%;
+}
+.callback-form form {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+}
+.callback-input {
+  font-size: 13px;
+  background: inherit;
+  padding: 16px 20px;
+  border: 1px solid #84bfc4;
+}
+.callback-input::placeholder {  
+  color: #ffffff;
+}
+.callback-input:first-child {
+  border-right: none;
+  border-radius: 3px 0 0 3px;
+}
+.callback-input:focus {
+  color: #ffffff;
+  outline: #84bfc4 auto 5px;
+}
+input:-webkit-autofill {
+  -webkit-text-fill-color: #fff;
+  -webkit-box-shadow: 0 0 0px 1000px #097e89 inset;
+}
+
+.callback-submit {
+  font-family: MyriadProLight;
+  font-size: 15px;
+  font-weight: 600;
+  background-color: #fff;
+  color: #097e89;
+  border: none;
+  padding: 16px 32px 16px 22px;
+  cursor: pointer;
+  border-radius: 0 3px 3px 0;
+}
+footer {
+  background-color: #474747;
+  color: #e5e5e5;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  padding: 30px 50px 40px 40px;
+}
+.footer-nav {
+  flex: 2;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.footer-nav .list ul {
+  list-style: none;
+  padding: 0;
+  margin-top: 10px;
+  margin-bottom: 0;
+}
+.footer-nav .list ul li a {
+  font-family: HelveticaLight;
+  font-size: 13px;
+  color: #ffffff;
+  text-decoration: none;
+  display: block;
+  padding: 7px 0;
+  transition: all .2s ease;
+}
+.footer-nav .list ul li a:hover, .footer-nav .list ul li a:focus {
+  text-decoration: underline;  
+}
+.footer-title {
+  font-family: HelveticaBold;
+  font-size: 16px;
+  padding-bottom: 3px;
+  text-transform: uppercase;
+  position: relative;
+}
+.footer-title:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 36px;
+  border-bottom: 1px solid #e5e5e5;
+}
+.media-links {
+  flex: 3;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: flex-end;
+}
+.media-links > form {
+  display: flex;
+  flex-flow: row nowrap;  
+}
+.subscribe-input {
+  font-family: HelveticaLight;
+  font-size: 14px;
+  background-color: #cccccc;
+  border: none;
+  padding: 15px 0 18px 15px;
+  width: 180px;
+}
+.subscribe-input::placeholder {
+  color: #4f4e4e;
+}
+.subscribe-input:focus {
+  outline: #097e89 auto 5px;
+}
+.subscribe-submit {
+  font-family: HelveticaLight;
+  font-size: 14px;
+  background-color: #0072bc;
+  color: #ffffff;
+  border-color: #cccccc;
+  border-left: none;
+  padding: 12px 26px;
+}
+footer .socials {
+  width: 280px;
+  margin-top: 40px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+}
+.social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: #2e2e2e;
+}
+.social a {
+  color: #e5e5e5;
+  transition: all .2s ease;
+}
+.social a:hover {
+  transition: all .2s ease;
+}
+.social .facebook:hover {
+  color: #3b5998;
+}
+.social .twitter:hover {
+  color: #00aced;
+}
+.social .google:hover {
+  color: #d34836;
+}
+.social .basketball:hover {
+  color: #dc143c;
+}
+.social .behance:hover {
+  color: #1769ff;
+}
+.social .instagram:hover {
+  color: #e95950;
+}
+.social .instagram {
+  font-size: 20px;
+}
+
 @media screen and (max-width: 767px) {
   .feedback-slider {
     flex-direction: column;
@@ -835,6 +1022,21 @@ body {
     justify-content: space-around;
     height: 550px;
     padding: 0;
+  }
+  .callback {
+    flex-direction: column;
+  }
+  .callback-form form {
+    flex-direction: column;
+    margin-bottom: 40px;
+  }
+  .callback-input:first-child {
+    border-right: 1px solid #84bfc4;
+    border-bottom: none;
+    border-radius: 3px 3px 0 0;
+  }
+  .callback-submit {
+    border-radius: 0 0 3px 3px;
   }
 }
 @media screen and (max-width: 360px) {
