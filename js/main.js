@@ -75,37 +75,90 @@ function activateCarousel() {
   let slideIndex = 0;
 
   banners.forEach(banner => {
-    banner.style.display = 'none'
+    banner.addEventListener('animationend', e => {
+      if(e.animationName.match(/slideOut(left|right)/gi)) {
+        banner.classList.remove('show', 'slideOutLeft', 'slideOutRight');
+      }
+      if(e.animationName.match(/slide(left|right)/gi)) {
+        banner.classList.remove('slideInLeft', 'slideInRight');
+      }
+    });
   });
 
-  function showSlide(n) {
-    console.log(n);
-    banners.forEach(banner => {
-      banner.style.display = 'none'
-    });
-
-    if(n >= banners.length) {
+  function showSlide(curr, next, type='next') {
+    if(next >= banners.length) {
       slideIndex = 0;
-      showSlide(slideIndex);
+      showSlide(banners.length - 1, slideIndex);
       return;
-    } else if (n < 0) {
+    } else if (next < 0) {
       slideIndex = banners.length - 1;
-      showSlide(slideIndex);
+      showSlide(0, slideIndex, 'prev');
       return;
     }
-    banners[n].style.display = 'flex';
+    if(type === 'next') {
+      banners[next].classList.add('show', 'slideInLeft');
+      if(banners[curr].classList.contains('show')) banners[curr].classList.add('slideOutLeft');
+    } else {
+      banners[next].classList.add('show', 'slideInRight');
+      if(banners[curr].classList.contains('show')) banners[curr].classList.add('slideOutRight');
+    }
   }
 
-  prevButton.addEventListener('click', () => showSlide(--slideIndex), true);
-  nextButton.addEventListener('click', () => showSlide(++slideIndex), true);
+  prevButton.addEventListener('click', () => showSlide(slideIndex, --slideIndex, 'prev'), true);
+  nextButton.addEventListener('click', () => showSlide(slideIndex, ++slideIndex, 'next'), true);
 
   if(bannerSection.dataset.autoslide !== 'false') {
-    const autoSlide = setInterval(() => showSlide(slideIndex++), 5000)
+    const autoSlide = setInterval(() => showSlide(slideIndex, ++slideIndex), 5000)
   }
 
-  showSlide(slideIndex);
+  showSlide(banners.length - 1, slideIndex);
 }
 
+function activateModal() {
+  const modalWrapper = document.querySelector('.modal-wrapper');
+  const modalBox = modalWrapper.querySelector('.modal-box');
+  const openBtn = document.querySelector('.about-btn');
+  const closeBtn = modalWrapper.querySelector('.close');
+
+
+  function openModal() {
+    const openBtnPos = openBtn.getBoundingClientRect();
+    const posStart = {
+      left: `${openBtnPos.left}px`,
+      top: `${openBtnPos.top}px`,
+      width: `${openBtnPos.width}px`,
+      height: `${openBtnPos.height}px`,
+      transform: 'none'
+    }
+    
+    Object.assign(modalBox.style, {...posStart, opacity: .6});
+    modalWrapper.style.display = 'block';
+    setTimeout(() => {
+      const posEnd = {
+        left: '50%',
+        top: '50%',
+        width: '80%',
+        height: 'auto',
+        transform: 'translate(-50%, -50%)'
+      }
+      Object.assign(modalBox.style, {...posEnd, opacity: 1});
+    },10)
+  }
+
+  function closeModal() {    
+    modalWrapper.style.display = 'none';
+  }
+
+  openBtn.addEventListener('click', openModal);
+  closeBtn.addEventListener('click', closeModal);
+}
+
+function activateServicesCarousel() {
+  //don't need this
+}
+
+activateServicesCarousel();
+activateModal();
 activateCarousel();
 activateScroll();
 activateToggleNav();
