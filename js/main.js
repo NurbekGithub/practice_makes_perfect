@@ -157,6 +157,62 @@ function activateServicesCarousel() {
   //don't need this
 }
 
+function activatePersonSlide() {
+  const slider = document.querySelector('.feedback-slider');
+  const personsWrapper = document.querySelector('.feedback-people-block');
+  const arrows = document.querySelectorAll('div.arrow');
+
+  function scrollPersons(e) {
+    const personsWrapperWidth = personsWrapper.offsetWidth;    
+    e.preventDefault();
+    switch (true) {
+      case e.target.classList.contains('next-arrow'):
+      case e.keyCode === 39:
+      personsWrapper.scroll({
+        left: personsWrapper.scrollLeft + personsWrapperWidth/3,
+        behavior: "smooth"
+      });
+      break;
+      case e.target.classList.contains('prev-arrow'):
+      case e.keyCode === 37:
+        personsWrapper.scroll({
+          left: personsWrapper.scrollLeft - personsWrapperWidth/3,
+          behavior: "smooth"
+        });
+        // personsWrapper.scrollLeft = personsWrapper.scrollLeft - personsWrapperWidth/3;
+      default:
+        break;
+    }
+  }
+
+  const ff = (function(){
+    let isFired = false;
+    return function() {
+      if(!isFired) {
+        personsWrapper.scrollLeft = 0;
+        isFired = true;
+      }
+      return;
+    }
+  })();
+
+  window.addEventListener('resize', ff);
+  arrows.forEach(arrow => addEventListener('click', scrollPersons));
+  slider.addEventListener('keyup', scrollPersons)
+  window.onscroll = function(e) {
+    if(Math.abs(this.scrollY - slider.offsetTop) < 200) {
+      if(document.activeElement !== slider) {
+        slider.focus();
+      }
+    } else {
+      if(document.activeElement !== document.body) {
+        slider.blur();
+      }
+    }
+  }
+}
+
+activatePersonSlide();
 activateServicesCarousel();
 activateModal();
 activateCarousel();
